@@ -11,9 +11,9 @@ double targetRPM = 100;
 double currentRPM = 0;
 double pidOutput = 0;
 
-double proportionalGain = 2.0, integralGain = 5.0, derivativeGain = 1.0;
+double PG = 2.0, IG = 5.0, DG = 1.0;
 
-PID myPID(&currentRPM, &pidOutput, &targetRPM, proportionalGain, integralGain, derivativeGain, DIRECT);
+PID myPID(&currentRPM, &pidOutput, &targetRPM, PG, IG, DG, DIRECT);
 
 double smoothedOutput = 0;
 double smoothingCoefficient = 0.1;
@@ -38,7 +38,7 @@ private:
   PID pid;
 };
 
-PIDController motorPID(&currentRPM, &pidOutput, &targetRPM, proportionalGain, integralGain, derivativeGain);
+PIDController motorPID(&currentRPM, &pidOutput, &targetRPM, PG, IG, DG);
 
 void setup() {
   pinMode(motorControlPin, OUTPUT);
